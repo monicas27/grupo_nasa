@@ -1,0 +1,51 @@
+import matplotlib.pyplot as plt
+
+# Definindo as categorias de causas e ações corretivas
+categorias = ['Processo', 'Pessoas', 'Tecnologia', 'Requisitos', 'Ambiente']
+causas = [
+    ['Falta de documentação clara', 'Falta de processos definidos', 'Falta de revisão'],
+    ['Falta de treinamento adequado', 'Falta de comunicação', 'Falta de experiência'],
+    ['Falhas na infraestrutura', 'Ferramentas inadequadas', 'Falhas na integração'],
+    ['Requisitos mal definidos', 'Mudanças nos requisitos', 'Falta de rastreabilidade'],
+    ['Ambiente instável', 'Ambiente de teste inadequado', 'Falhas no controle de versão']
+]
+acoes_corretivas = [
+    ['Melhorar a documentação', 'Estabelecer processos', 'Investir em revisões'],
+    ['Investir em treinamento', 'Melhorar a comunicação', 'Promover experiência'],
+    ['Resolver falhas na infraestrutura', 'Atualizar ferramentas', 'Melhorar integração'],
+    ['Refinar definição dos requisitos', 'Avaliar impactos das mudanças', 'Estabelecer rastreabilidade'],
+    ['Estabilizar ambiente de desenvolvimento', 'Ajustar ambiente de teste', 'Melhorar o gerenciamento']
+]
+
+# Criando o gráfico
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Configurando a posição dos eixos
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_position(('axes', 0.1))
+ax.spines['bottom'].set_position(('axes', 0.1))
+
+# Adicionando as setas e texto para as categorias de causas
+for i, cat in enumerate(categorias):
+    ax.arrow(0.1, i, 0.3, 0, head_width=0.1, head_length=0.1, fc='blue', ec='blue')
+    ax.text(0.45, i, cat, verticalalignment='center')
+
+# Adicionando as setas e texto para as causas e ações corretivas
+for i, (causa_linha, acao_linha) in enumerate(zip(causas, acoes_corretivas)):
+    y = len(causa_linha) * 0.1
+    for j, (causa, acao) in enumerate(zip(causa_linha, acao_linha)):
+        ax.arrow(0.4, i + 0.1 * j, 0.5, 0, head_width=0.1, head_length=0.1, fc='green', ec='green')
+        ax.text(0.9, i + 0.1 * j, causa, verticalalignment='center')
+        ax.text(1.1, i + 0.1 * j, acao, verticalalignment='center')
+
+# Configurando os limites dos eixos e removendo ticks
+ax.set_xlim(0, 1.5)
+ax.set_ylim(0, len(categorias))
+ax.set_xticks([])
+ax.set_yticks([])
+
+# Adicionando título e exibindo o gráfico
+plt.title('Diagrama de Espinha de Peixe - Causa e Efeito')
+plt.show()
+plt.savefig('diagrama_espinha_de_peixe.png')
