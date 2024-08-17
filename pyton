@@ -46,6 +46,6 @@ ax.set_xticks([])
 ax.set_yticks([])
 
 # Adicionando título e exibindo o gráfico
-plt.title('Diagrama de Espinha de Peixe - Causa e Efeito')
+plt.title('Diagrama de Espinha de Peixe - Causa e Efeito - diagrama de ishikawa')
 plt.show()
 plt.savefig('diagrama_espinha_de_peixe.png')
